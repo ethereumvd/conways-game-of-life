@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "grid.h"
+#include "sim.h"
 
 const int win_height = 750;
 const int win_width = 750;
@@ -12,11 +12,13 @@ int main() {
 
   InitWindow(win_width, win_height, win_title);
   SetTargetFPS(fps);
+  Simulate simulate = Simulate();
 
   while(!WindowShouldClose()) {
 
     BeginDrawing();
     ClearBackground(grey);
+    simulate.Draw();
     EndDrawing();
 
   }
