@@ -1,4 +1,4 @@
-#include "sim.h"
+#include "../headers/sim.h"
 
 // Simulate::Simulate(int width, int height, int cellsize) {
 //

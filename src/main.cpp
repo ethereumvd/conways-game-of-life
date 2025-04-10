@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include "sim.h"
+#include "../headers/sim.h"
 
 const int win_height = 750;
 const int win_width = 750;
@@ -27,8 +27,7 @@ int main() {
       int column = mouse_pos.x / cell_size;
       simulate.toggle_cell(row, column);
 
-    }
-    if(IsKeyPressed(KEY_ENTER)) {
+    }else if(IsKeyPressed(KEY_ENTER)) {
 
       simulate.start();
 
