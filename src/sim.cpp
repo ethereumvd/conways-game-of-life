@@ -47,43 +47,81 @@ int Simulate::count_live_neighbours(int row, int column) {
 
 void Simulate::update_state() {
 
-  for(int i=0; i<grid.rows; i++) {
+  if(is_running()) {
+    for(int i=0; i<grid.rows; i++) {
 
-    for(int j=0; j<grid.columns; j++) {
+      for(int j=0; j<grid.columns; j++) {
 
-      int live_neighbours = count_live_neighbours(i, j);
-      int cell_val = grid.get_value(i, j);
+        int live_neighbours = count_live_neighbours(i, j);
+        int cell_val = grid.get_value(i, j);
 
-      if(cell_val == 1) {
+        if(cell_val == 1) {
 
-        if(live_neighbours > 3 || live_neighbours < 2) {
+          if(live_neighbours > 3 || live_neighbours < 2) {
 
-          new_grid.set_value(i, j, 0);
+            new_grid.set_value(i, j, 0);
 
-        } else {
+          } else {
 
-          new_grid.set_value(i, j, 1);
+            new_grid.set_value(i, j, 1);
 
-        }
-
-      } else {
-
-        if(live_neighbours == 3) {
-
-          new_grid.set_value(i, j, 1);
+          }
 
         } else {
 
-          new_grid.set_value(i, j, 0);
+          if(live_neighbours == 3) {
+
+            new_grid.set_value(i, j, 1);
+
+          } else {
+
+            new_grid.set_value(i, j, 0);
+
+          }
 
         }
 
       }
 
     }
-
+    grid = new_grid;
   }
-  grid = new_grid;
 
 }
 
+bool Simulate::is_running() {
+
+  return run;
+
+}
+
+void Simulate::start() {
+
+  run = true;
+
+}
+
+void Simulate::stop() {
+
+  run = false;
+
+}
+
+void Simulate::clear() {
+
+  if(!is_running()) grid.clear_grid() ;
+
+}
+
+void Simulate::gen_random_state() {
+
+  if(!is_running()) grid.fill_grid();
+
+}
+
+void Simulate::toggle_cell(int row, int col) {
+
+  if(!is_running()) grid.toggle_cell_val(row, col);
+
+
+}

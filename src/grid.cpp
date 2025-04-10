@@ -12,7 +12,7 @@ Grid::Grid(int width, int height , int cellsize){
   columns = width/cellsize ;
 
   Initialise();
-  fill_grid();
+  // fill_grid();
 
 }
 
@@ -82,3 +82,27 @@ void Grid::fill_grid() {
 
 }
 
+void Grid::clear_grid() {
+
+  for(int i=0; i<rows; i++) {
+
+    for(int j=0; j<columns; j++) {
+
+      grid[i][j] = 0;
+
+    }
+
+  }
+
+}
+
+
+void Grid::toggle_cell_val(int row, int column) {
+
+  if(is_valid_cell(row, column)) {
+
+    grid[row][column] = !grid[row][column];
+
+  }
+
+}

@@ -15,5 +15,7 @@ public:
   int columns;
   int cell_size;
   void fill_grid();
+  void clear_grid();
+  void toggle_cell_val(int row, int column);
 
 };
