@@ -1,19 +1,19 @@
 #pragma once
-
 #include<vector>
 
 class Grid {
 
 public:
-  Grid();
+  Grid(int width , int height , int cellsize);
+  std::vector<std::vector<int>> grid;
   void Initialise();
-  int grid[30][30];
   void draw_grid();
   void set_value(int row, int column, int val);
-
-private:
+  int get_value(int row, int column);
+  bool is_valid_cell(int row, int column);
   int rows;
   int columns;
   int cell_size;
+  void fill_grid();
 
 };
